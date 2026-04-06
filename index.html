@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth bg-slate-900">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>André Sousa | Desenvolvedor Web & Especialista em Landing Pages</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            400: '#38bdf8', // Light blue
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                        },
+                        secondary: {
+                            400: '#818cf8', // Indigo
+                            500: '#6366f1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            color: #f8fafc;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-primary-500 selection:text-white">
+
+    <!-- HEADER -->
+    <header class="fixed w-full top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 cursor-pointer font-bold text-xl tracking-tight" onclick="window.scrollTo(0,0)">
+                    André<span class="text-primary-500">Sousa</span>
+                </div>
+                
+                <nav class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
+                    <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
+                    <a href="#servicos" class="hover:text-white transition-colors">Serviços</a>
+                    <a href="#portfolio" class="hover:text-white transition-colors">Portfólio</a>
+                </nav>
+
+                <div class="hidden md:block">
+                    <a href="https://api.whatsapp.com/send?phone=5538988464487&text=Ol%C3%A1%20Andr%C3%A9!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" class="inline-flex items-center justify-center px-6 py-2.5 bg-primary-600 hover:bg-primary-500 text-white font-semibold rounded-lg transition-all duration-300 shadow-[0_0_15px_rgba(2,132,199,0.3)] hover:shadow-[0_0_25px_rgba(2,132,199,0.5)]">
+                        Fazer Orçamento
+                    </a>
+                </div>
+
+                <div class="md:hidden text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. HERO SECTION -->
+        <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden" id="sobre">
+            <!-- Efeitos de Fundo -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-[500px] bg-primary-600/20 rounded-full blur-[120px] -z-10"></div>
+
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
+                <!-- Textos -->
+                <div class="w-full lg:w-3/5 text-center lg:text-left reveal active">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-sm font-medium text-slate-300 mb-6">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                        </span>
+                        Disponível para novos projetos
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                        Transformando ideias em <span class="text-gradient">experiências digitais</span> que vendem.
+                    </h1>
+                    
+                    <p class="text-lg text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Olá, eu sou o André Sousa. Sou Desenvolvedor Web especializado na criação de Landing Pages de alta conversão, Cardápios Digitais interativos e sites institucionais modernos. Ajudo negócios a escalarem seus resultados na internet.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#portfolio" class="inline-flex justify-center items-center px-8 py-4 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-100 transition-all duration-300">
+                            Ver Meus Trabalhos
+                            <i data-lucide="arrow-down" class="ml-2 w-5 h-5"></i>
+                        </a>
+                        <a href="https://api.whatsapp.com/send?phone=5538988464487&text=Ol%C3%A1%20Andr%C3%A9!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" class="inline-flex justify-center items-center px-8 py-4 bg-transparent border border-slate-700 text-white font-bold rounded-xl hover:bg-slate-800 transition-all duration-300">
+                            Falar no WhatsApp
+                            <i data-lucide="message-circle" class="ml-2 w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Foto de Perfil (Arquivo Local) -->
+                <div class="w-full lg:w-2/5 flex justify-center reveal active delay-100">
+                    <div class="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
+                        <!-- Círculos de decoração atrás da foto -->
+                        <div class="absolute inset-0 border-2 border-primary-500/30 rounded-full animate-[spin_10s_linear_infinite]"></div>
+                        <div class="absolute inset-4 border border-secondary-500/30 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+                        
+                        <!-- IMAGEM PUXANDO DO ARQUIVO LOCAL: Perfil.png -->
+                        <img src="Perfil.png" alt="André Sousa" class="absolute inset-0 w-full h-full object-cover rounded-full shadow-2xl z-10 bg-slate-800 border-4 border-slate-900 fallback-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400'; this.classList.remove('fallback-img')">
+                        
+                        <!-- Badge flutuante -->
+                        <div class="absolute -bottom-4 -right-4 bg-slate-800 border border-slate-700 p-4 rounded-xl shadow-xl z-20 flex items-center gap-3">
+                            <div class="bg-primary-500/20 p-2 rounded-lg text-primary-400">
+                                <i data-lucide="code-2" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-medium">Especialista em</p>
+                                <p class="text-sm font-bold text-white">Desenvolvimento Web</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SERVIÇOS -->
+        <section id="servicos" class="py-24 bg-slate-950/50 border-y border-slate-800">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-primary-500 font-bold tracking-widest uppercase text-sm mb-3">O que eu faço</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white">Soluções completas para o seu negócio</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Serviço 1 -->
+                    <div class="glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 reveal">
+                        <div class="w-14 h-14 bg-primary-500/10 border border-primary-500/20 text-primary-400 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="layout-template" class="w-7 h-7"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Landing Pages de Conversão</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Páginas ultra-rápidas e otimizadas para transformar os visitantes dos seus anúncios em clientes ou leads qualificados.</p>
+                        <ul class="text-sm text-slate-300 space-y-2">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary-500"></i> Copy Persuasiva</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary-500"></i> Design Mobile-First</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary-500"></i> Carregamento Veloz</li>
+                        </ul>
+                    </div>
+
+                    <!-- Serviço 2 -->
+                    <div class="glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 reveal delay-100">
+                        <div class="w-14 h-14 bg-secondary-500/10 border border-secondary-500/20 text-secondary-400 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="smartphone" class="w-7 h-7"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Cardápios Digitais</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Modernize seu restaurante com cardápios interativos, fáceis de navegar no celular e com botão de pedidos direto para o WhatsApp.</p>
+                        <ul class="text-sm text-slate-300 space-y-2">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-secondary-500"></i> Organização por Categorias</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-secondary-500"></i> Integração com WhatsApp</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-secondary-500"></i> Atualização Fácil</li>
+                        </ul>
+                    </div>
+
+                    <!-- Serviço 3 -->
+                    <div class="glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 reveal delay-200">
+                        <div class="w-14 h-14 bg-primary-500/10 border border-primary-500/20 text-primary-400 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="monitor" class="w-7 h-7"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Desenvolvimento Web</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Criação de sites institucionais, blogs e páginas complexas desenvolvidas sob medida com as melhores tecnologias do mercado.</p>
+                        <ul class="text-sm text-slate-300 space-y-2">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary-500"></i> Sites Institucionais</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary-500"></i> SEO Otimizado</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-primary-500"></i> Design Exclusivo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PORTFÓLIO (Arquivos Locais) -->
+        <section id="portfolio" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
+                    <div>
+                        <h2 class="text-primary-500 font-bold tracking-widest uppercase text-sm mb-3">Portfólio</h2>
+                        <h3 class="text-3xl md:text-4xl font-bold text-white">Meus Trabalhos Recentes</h3>
+                    </div>
+                    <p class="text-slate-400 max-w-md text-sm md:text-right">
+                        Explore as últimas páginas criadas. Cada projeto foi desenhado sob medida com foco na identidade e objetivo do cliente.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Item 1: Consultoria -->
+                    <a href="landing-page-consultoria.html" target="_blank" class="project-card group block bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary-500/50 transition-colors reveal">
+                        <div class="relative h-56 overflow-hidden bg-slate-900">
+                            <!-- Placeholder de Imagem para o Portfólio -->
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Consultoria" class="project-img w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 right-4 bg-primary-600 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                <i data-lucide="external-link" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-primary-400 uppercase tracking-wider mb-2 block">Landing Page</span>
+                            <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary-400 transition-colors">Consultoria Empresarial</h4>
+                            <p class="text-slate-400 text-sm">Página focada em captação de leads (B2B) com formulário dinâmico.</p>
+                        </div>
+                    </a>
+
+                    <!-- Item 2: Clínica Médica (IMAGEM CORRIGIDA) -->
+                    <a href="landing-page-ClinicaMed.html" target="_blank" class="project-card group block bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary-500/50 transition-colors reveal delay-100">
+                        <div class="relative h-56 overflow-hidden bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800" alt="Clínica" class="project-img w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 right-4 bg-primary-600 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                <i data-lucide="external-link" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-primary-400 uppercase tracking-wider mb-2 block">Landing Page</span>
+                            <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary-400 transition-colors">Clínica Médica</h4>
+                            <p class="text-slate-400 text-sm">Design limpo e focado em agendamento de consultas via WhatsApp.</p>
+                        </div>
+                    </a>
+
+                    <!-- Item 3: Advocacia (IMAGEM CORRIGIDA) -->
+                    <a href="landing-page-advocacia.html" target="_blank" class="project-card group block bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary-500/50 transition-colors reveal delay-200">
+                        <div class="relative h-56 overflow-hidden bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="Advocacia" class="project-img w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 right-4 bg-primary-600 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                <i data-lucide="external-link" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-primary-400 uppercase tracking-wider mb-2 block">Landing Page</span>
+                            <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary-400 transition-colors">Escritório de Advocacia</h4>
+                            <p class="text-slate-400 text-sm">Layout minimalista e escuro (Dark Mode) para transmitir autoridade.</p>
+                        </div>
+                    </a>
+
+                    <!-- Item 4: Restaurante Landing Page -->
+                    <a href="landing-page-restaurante.html" target="_blank" class="project-card group block bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary-500/50 transition-colors reveal">
+                        <div class="relative h-56 overflow-hidden bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&q=80&w=800" alt="Restaurante" class="project-img w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 right-4 bg-primary-600 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                <i data-lucide="external-link" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-primary-400 uppercase tracking-wider mb-2 block">Landing Page</span>
+                            <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary-400 transition-colors">Reserva de Restaurante</h4>
+                            <p class="text-slate-400 text-sm">Design sofisticado com foco em reservas e apresentação do espaço.</p>
+                        </div>
+                    </a>
+
+                    <!-- Item 5: Cardápio Digital (IMAGEM CORRIGIDA) -->
+                    <a href="cardapio-digital-restaurante.html" target="_blank" class="project-card group block bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary-500/50 transition-colors reveal delay-100">
+                        <div class="relative h-56 overflow-hidden bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=800" alt="Cardápio" class="project-img w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 right-4 bg-primary-600 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                <i data-lucide="external-link" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-secondary-400 uppercase tracking-wider mb-2 block">Aplicação Web</span>
+                            <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary-400 transition-colors">Cardápio Digital</h4>
+                            <p class="text-slate-400 text-sm">Menu interativo para celular categorizado com pratos e bebidas.</p>
+                        </div>
+                    </a>
+
+                    <!-- Item 6: Tráfego Pago -->
+                    <a href="landing-page-trafego-pago.html" target="_blank" class="project-card group block bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-primary-500/50 transition-colors reveal delay-200">
+                        <div class="relative h-56 overflow-hidden bg-slate-900">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Tráfego Pago" class="project-img w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 right-4 bg-primary-600 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                <i data-lucide="external-link" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-primary-400 uppercase tracking-wider mb-2 block">Landing Page</span>
+                            <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary-400 transition-colors">Gestor de Tráfego</h4>
+                            <p class="text-slate-400 text-sm">Página de alta performance com formulário de qualificação de leads.</p>
+                        </div>
+                    </a>
+
+                    <!-- Outros links secundários (Psicologia e Arquitetura) -->
+                    <div class="md:col-span-2 lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+                        <a href="landing-page-psicologia.html" target="_blank" class="flex items-center justify-between p-6 bg-slate-800/50 border border-slate-700 rounded-xl hover:bg-slate-800 transition-colors group">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-slate-700 p-3 rounded-lg text-slate-300 group-hover:text-primary-400 group-hover:bg-primary-500/10 transition-colors">
+                                    <i data-lucide="heart" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white">Clínica de Psicologia</h4>
+                                    <p class="text-sm text-slate-400">Design acolhedor e infantil.</p>
+                                </div>
+                            </div>
+                            <i data-lucide="chevron-right" class="text-slate-500 group-hover:text-primary-400"></i>
+                        </a>
+
+                        <a href="landing-page-arquitetura.html" target="_blank" class="flex items-center justify-between p-6 bg-slate-800/50 border border-slate-700 rounded-xl hover:bg-slate-800 transition-colors group">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-slate-700 p-3 rounded-lg text-slate-300 group-hover:text-primary-400 group-hover:bg-primary-500/10 transition-colors">
+                                    <i data-lucide="home" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white">Escritório de Arquitetura</h4>
+                                    <p class="text-sm text-slate-400">Visual premium e focado em imagens.</p>
+                                </div>
+                            </div>
+                            <i data-lucide="chevron-right" class="text-slate-500 group-hover:text-primary-400"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CTA / CONTATO -->
+        <section class="py-24 relative overflow-hidden bg-primary-600">
+            <!-- Padrão de Fundo -->
+            <div class="absolute inset-0 opacity-10">
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grid)" />
+                </svg>
+            </div>
+            
+            <div class="max-w-4xl mx-auto px-6 relative z-10 text-center reveal">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">Pronto para dar o próximo passo?</h2>
+                <p class="text-xl text-slate-100 mb-10 max-w-2xl mx-auto">
+                    Seja para criar uma nova Landing Page, um Cardápio Digital ou refazer o seu site atual, estou aqui para ajudar. Clique abaixo para conversarmos.
+                </p>
+                <a href="https://api.whatsapp.com/send?phone=5538988464487&text=Ol%C3%A1%20Andr%C3%A9!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" class="inline-flex justify-center items-center px-10 py-5 text-lg font-bold rounded-xl text-slate-900 bg-white hover:bg-slate-100 shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <i data-lucide="message-circle" class="mr-2 w-6 h-6"></i>
+                    Falar com André no WhatsApp
+                </a>
+                <p class="mt-6 text-sm text-slate-200 font-medium">WhatsApp: (38) 98846-4487</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center md:text-left md:flex justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <div class="font-bold text-xl text-white mb-2">
+                    André<span class="text-primary-500">Sousa</span>
+                </div>
+                <p class="text-sm text-slate-500">Desenvolvedor Web. Transformando ideias em código.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-4 text-sm text-slate-400">
+                <a href="https://api.whatsapp.com/send?phone=5538988464487" target="_blank" class="hover:text-white transition-colors flex items-center gap-2">
+                    <i data-lucide="phone" class="w-4 h-4"></i> (38) 98846-4487
+                </a>
+                <span class="hidden md:block text-slate-700">|</span>
+                <p>© 2026. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÃO FIXO WHATSAPP -->
+    <a href="https://api.whatsapp.com/send?phone=5538988464487&text=Ol%C3%A1%20Andr%C3%A9!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-[0_4px_14px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-300 group" aria-label="Falar no WhatsApp">
+        <i data-lucide="message-circle" class="w-7 h-7"></i>
+        <!-- Efeito de pulso no WhatsApp -->
+        <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-30 group-hover:animate-ping -z-10"></span>
+    </a>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Inicializar os Ícones
+        lucide.createIcons();
+
+        // Efeito do Header
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+
+        // Animação de Surgimento ao rolar
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        setTimeout(reveal, 100);
+    </script>
+</body>
+</html>

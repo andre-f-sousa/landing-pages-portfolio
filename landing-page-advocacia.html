@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth bg-neutral-950">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valença | Advocacia Estratégica</title>
+    
+    <!-- Google Fonts: Manrope para um visual premium e moderno -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration (Dark Minimalist) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                    colors: {
+                        neutral: {
+                            750: '#2d2d2d',
+                            850: '#1f1f1f',
+                            950: '#0a0a0a', // Deep almost black
+                        },
+                        // Accent color: Muted Bronze/Gold for sophistication
+                        accent: {
+                            400: '#e5b589',
+                            500: '#cda077',
+                            600: '#b08660',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+        }
+
+        /* Minimalist Input Fields */
+        .input-minimal {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #404040;
+            border-radius: 0;
+            padding: 12px 0;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .input-minimal:focus {
+            outline: none;
+            border-bottom-color: #cda077;
+            box-shadow: none;
+        }
+
+        .input-minimal::placeholder {
+            color: #737373;
+            font-weight: 300;
+        }
+
+        /* Elegant scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #404040;
+        }
+
+        /* Slow, elegant reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .img-zoom {
+            transition: transform 1.5s ease;
+        }
+        .group:hover .img-zoom {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-accent-500 selection:text-black">
+
+    <!-- MINIMALIST HEADER -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-500" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-24">
+                <!-- Logo -->
+                <div class="flex-shrink-0 cursor-pointer text-white font-light text-2xl tracking-[0.2em] uppercase" onclick="window.scrollTo(0,0)">
+                    VALENÇA<span class="text-accent-500">.</span>
+                </div>
+                
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex gap-8 text-sm font-medium tracking-wider text-neutral-400">
+                    <a href="#sobre" class="hover:text-white transition-colors">A Banca</a>
+                    <a href="#atuacao" class="hover:text-white transition-colors">Atuação</a>
+                    <a href="#contato" class="text-white hover:text-accent-500 transition-colors">Contato</a>
+                </nav>
+
+                <!-- Mobile Menu Icon -->
+                <div class="md:hidden text-white">
+                    <i data-lucide="menu" class="w-6 h-6 stroke-1"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. HERO SECTION (Immersive) -->
+        <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+            <!-- Darkened Background Image -->
+            <div class="absolute inset-0 z-0 bg-neutral-950">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920" alt="Escritório corporativo sério e premium" class="w-full h-full object-cover object-center opacity-20 grayscale">
+                <!-- Stronger Gradient Overlay for perfect text legibility -->
+                <div class="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-950/60 to-neutral-950"></div>
+            </div>
+
+            <div class="relative z-10 text-center px-6 max-w-5xl mx-auto mt-16 reveal active">
+                <p class="text-accent-500 uppercase tracking-[0.3em] text-xs font-semibold mb-6">Advocacia Boutique</p>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-light text-white leading-tight mb-8">
+                    Segurança jurídica com <br/> <span class="font-semibold">visão de negócios.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-neutral-400 font-light max-w-2xl mx-auto mb-12">
+                    Protegendo o seu patrimônio e viabilizando suas operações com estratégias jurídicas de alto nível e total discrição.
+                </p>
+                
+                <a href="#contato" class="inline-flex items-center px-8 py-4 bg-white text-black font-semibold text-sm tracking-widest uppercase hover:bg-accent-500 hover:text-white transition-all duration-500 group">
+                    Falar com um sócio
+                    <i data-lucide="arrow-right" class="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-50 animate-pulse">
+                <span class="text-[10px] uppercase tracking-widest text-white mb-2">Scroll</span>
+                <div class="w-[1px] h-12 bg-white"></div>
+            </div>
+        </section>
+
+        <!-- 2. IDENTIFICAÇÃO / A ESSÊNCIA -->
+        <section id="sobre" class="py-32 bg-neutral-950">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+                    <div class="reveal">
+                        <h2 class="text-3xl md:text-5xl font-light text-white leading-tight mb-8">
+                            A excelência jurídica <br/>
+                            <span class="text-neutral-500">como pilar de decisão.</span>
+                        </h2>
+                        <div class="w-12 h-[1px] bg-accent-500 mb-8"></div>
+                        <p class="text-neutral-400 font-light leading-relaxed mb-6 text-lg">
+                            Muitos escritórios limitam-se a apontar os riscos. Nossa filosofia é atuar como parceiros estratégicos: entendemos o cenário do seu negócio para entregar soluções viáveis, inovadoras e totalmente seguras.
+                        </p>
+                        <p class="text-neutral-400 font-light leading-relaxed mb-10 text-lg">
+                            Atendemos um seleto grupo de clientes corporativos e famílias empresárias, garantindo dedicação exclusiva, agilidade incomparável e confidencialidade absoluta.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-8 border-t border-neutral-800 pt-8">
+                            <div>
+                                <span class="block text-4xl font-light text-white mb-2">20+</span>
+                                <span class="text-sm text-neutral-500 tracking-wider uppercase">Anos de atuação</span>
+                            </div>
+                            <div>
+                                <span class="block text-4xl font-light text-white mb-2">R$ 2B+</span>
+                                <span class="text-sm text-neutral-500 tracking-wider uppercase">Em litígios evitados</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative reveal h-[600px]">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800" alt="Reunião executiva de advogados" class="w-full h-full object-cover">
+                        <!-- Decorative Frame -->
+                        <div class="absolute -inset-4 border border-neutral-800 -z-10 translate-x-8 translate-y-8"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SERVIÇOS / ATUAÇÃO -->
+        <section id="atuacao" class="py-32 bg-neutral-900 border-y border-neutral-800">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="mb-20 reveal">
+                    <p class="text-accent-500 uppercase tracking-[0.2em] text-xs font-semibold mb-4">Nossas Áreas</p>
+                    <h2 class="text-4xl md:text-5xl font-light text-white">Especialidades da Banca.</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="group cursor-pointer reveal">
+                        <div class="overflow-hidden mb-6 h-80 relative">
+                            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800" alt="Direito Empresarial" class="w-full h-full object-cover img-zoom opacity-80 group-hover:opacity-100 transition-opacity">
+                            <div class="absolute inset-0 bg-neutral-950/20 group-hover:bg-transparent transition-colors"></div>
+                        </div>
+                        <h3 class="text-xl font-medium text-white mb-3">Direito Empresarial</h3>
+                        <p class="text-neutral-500 font-light text-sm leading-relaxed">
+                            M&A (Fusões e Aquisições), governança corporativa, estruturação societária e compliance, oferecendo base sólida para a expansão dos negócios.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="group cursor-pointer reveal delay-100">
+                        <div class="overflow-hidden mb-6 h-80 relative">
+                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800" alt="Planejamento Sucessório" class="w-full h-full object-cover img-zoom opacity-80 group-hover:opacity-100 transition-opacity">
+                            <div class="absolute inset-0 bg-neutral-950/20 group-hover:bg-transparent transition-colors"></div>
+                        </div>
+                        <h3 class="text-xl font-medium text-white mb-3">Planejamento Sucessório</h3>
+                        <p class="text-neutral-500 font-light text-sm leading-relaxed">
+                            Proteção patrimonial, constituição de holdings e transição de gerações em empresas familiares com eficiência tributária.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="group cursor-pointer reveal delay-200">
+                        <div class="overflow-hidden mb-6 h-80 relative">
+                            <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?auto=format&fit=crop&q=80&w=800" alt="Contencioso Estratégico" class="w-full h-full object-cover img-zoom opacity-80 group-hover:opacity-100 transition-opacity">
+                            <div class="absolute inset-0 bg-neutral-950/20 group-hover:bg-transparent transition-colors"></div>
+                        </div>
+                        <h3 class="text-xl font-medium text-white mb-3">Contencioso Estratégico</h3>
+                        <p class="text-neutral-500 font-light text-sm leading-relaxed">
+                            Representação em disputas de alta complexidade nos Tribunais Superiores e em Câmaras de Arbitragem nacionais e internacionais.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PROVA SOCIAL (Minimalista) -->
+        <section class="py-32 bg-neutral-950">
+            <div class="max-w-4xl mx-auto px-6 text-center reveal">
+                <i data-lucide="quote" class="w-12 h-12 text-neutral-800 mx-auto mb-8"></i>
+                <h3 class="text-2xl md:text-4xl font-light text-white leading-relaxed mb-10">
+                    "A segurança jurídica e o olhar focado em negócios da Valença & Associados foram fatores determinantes para a estruturação do nosso IPO. Uma parceria de confiança indispensável."
+                </h3>
+                <p class="text-accent-500 tracking-widest uppercase text-sm font-semibold">Roberto M. Carvalho</p>
+                <p class="text-neutral-600 text-sm mt-2">CEO, Holding de Investimentos</p>
+            </div>
+        </section>
+
+        <!-- 5. FORMULÁRIO DE CAPTAÇÃO / CTA -->
+        <section id="contato" class="py-0">
+            <div class="flex flex-col lg:flex-row">
+                <!-- Info Side -->
+                <div class="lg:w-1/2 bg-neutral-900 p-12 lg:p-24 flex flex-col justify-center">
+                    <div class="max-w-md mx-auto lg:mx-0 reveal">
+                        <h2 class="text-4xl md:text-5xl font-light text-white mb-6">Agende uma reunião.</h2>
+                        <p class="text-neutral-400 font-light mb-12">
+                            Preencha o formulário para agendar uma consulta inicial. Todas as informações submetidas estão sob estrito sigilo profissional.
+                        </p>
+
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-accent-500 mt-1 stroke-1"></i>
+                                <div>
+                                    <p class="text-white font-medium mb-1">Nosso Escritório</p>
+                                    <p class="text-neutral-500 font-light text-sm">Av. Brigadeiro Faria Lima, 3500 - 10º Andar<br>Itaim Bibi, São Paulo, SP</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <i data-lucide="mail" class="w-5 h-5 text-accent-500 mt-1 stroke-1"></i>
+                                <div>
+                                    <p class="text-white font-medium mb-1">Contato Direto</p>
+                                    <p class="text-neutral-500 font-light text-sm">socios@valenca.adv.br</p>
+                                    <p class="text-neutral-500 font-light text-sm">+55 (11) 3000-0000</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Side -->
+                <div class="lg:w-1/2 bg-neutral-950 p-12 lg:p-24 flex flex-col justify-center relative border-l border-neutral-900">
+                    <div class="max-w-md mx-auto w-full reveal delay-100">
+                        <form id="leadForm" onsubmit="submitForm(event)" class="space-y-8">
+                            
+                            <div>
+                                <input type="text" id="name" required class="w-full input-minimal text-lg" placeholder="Nome Completo / Empresa">
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <input type="email" id="email" required class="w-full input-minimal text-lg" placeholder="E-mail Corporativo">
+                                </div>
+                                <div>
+                                    <input type="tel" id="phone" required class="w-full input-minimal text-lg" placeholder="Telefone / WhatsApp">
+                                </div>
+                            </div>
+
+                            <div>
+                                <select id="serviceType" required class="w-full input-minimal text-lg bg-transparent appearance-none text-neutral-400 cursor-pointer">
+                                    <option value="" disabled selected>Área de Interesse</option>
+                                    <option value="Empresarial" class="bg-neutral-900">Direito Societário / M&A</option>
+                                    <option value="Sucessorio" class="bg-neutral-900">Planejamento Patrimonial</option>
+                                    <option value="Contencioso" class="bg-neutral-900">Contencioso / Arbitragem</option>
+                                    <option value="Outros" class="bg-neutral-900">Outros Assuntos</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <textarea id="message" rows="1" class="w-full input-minimal text-lg resize-none" placeholder="Breve resumo do caso (opcional)"></textarea>
+                            </div>
+
+                            <button type="submit" id="submitBtn" class="w-full flex justify-center items-center py-5 bg-white text-black font-semibold text-sm tracking-widest uppercase hover:bg-accent-500 hover:text-white transition-all duration-300 mt-12">
+                                Solicitar Atendimento
+                            </button>
+                            
+                            <div id="successMessage" class="hidden mt-6 p-4 border border-accent-500/30 text-accent-400 text-center text-sm font-light">
+                                Solicitação recebida. Nossa equipe fará a triagem do seu caso e entrará em contato em breve.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MINIMALIST FOOTER -->
+    <footer class="bg-neutral-950 py-12 border-t border-neutral-900">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-white font-light text-xl tracking-[0.2em] uppercase">
+                VALENÇA<span class="text-accent-500">.</span>
+            </div>
+            
+            <div class="flex gap-6 text-neutral-500">
+                <a href="#" class="hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5 stroke-1"></i></a>
+            </div>
+
+            <p class="text-xs text-neutral-600 font-light">
+                © 2026 Valença & Associados. Todos os direitos reservados. <br/> Inscrito na OAB/SP nº 00.000
+            </p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Inicializar Ícones
+        lucide.createIcons();
+
+        // Efeito do Menu transparente ao rolar
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-neutral-950/90', 'backdrop-blur-md', 'border-b', 'border-neutral-900');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('bg-neutral-950/90', 'backdrop-blur-md', 'border-b', 'border-neutral-900');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Animação de revelação suave (Scroll Reveal)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        setTimeout(reveal, 100);
+
+        // Auto-resize Textarea
+        const tx = document.getElementsByTagName("textarea");
+        for (let i = 0; i < tx.length; i++) {
+            tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+            tx[i].addEventListener("input", OnInput, false);
+        }
+        function OnInput() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + "px";
+        }
+
+        // Simulação do Formulário
+        function submitForm(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const successMsg = document.getElementById('successMessage');
+            
+            // Estado de carregamento
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Processando...';
+            btn.classList.add('opacity-50', 'pointer-events-none');
+            
+            // Simula o tempo de envio (1.5s)
+            setTimeout(() => {
+                document.getElementById('leadForm').reset();
+                btn.innerHTML = originalText;
+                btn.classList.remove('opacity-50', 'pointer-events-none');
+                
+                successMsg.classList.remove('hidden');
+                
+                // Esconde a mensagem após 6 segundos
+                setTimeout(() => {
+                    successMsg.classList.add('hidden');
+                }, 6000);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

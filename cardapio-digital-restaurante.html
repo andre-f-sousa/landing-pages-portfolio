@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oca | Cardápio Digital</title>
+    
+    <!-- Google Fonts: Playfair Display (Elegância/Serifa) e Lato (Leitura) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        // Paleta Dark Luxury & Natureza Brasileira
+                        base: {
+                            900: '#111312', // Fundo principal quase preto/verde musgo muito escuro
+                            800: '#1A1D1C', // Fundo de cards
+                            700: '#2A2E2D', // Bordas sutis
+                        },
+                        gold: {
+                            400: '#D4AF37', // Dourado clássico
+                            500: '#C5A028',
+                            600: '#AA8822',
+                        },
+                        sand: {
+                            100: '#F5F2EB', // Texto principal (não branco puro)
+                            200: '#E6DFD3',
+                            400: '#B0A89A', // Texto secundário (descrições)
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #111312;
+            color: #F5F2EB;
+            /* Compensar o cabeçalho fixo ao clicar nos links âncora */
+            scroll-padding-top: 140px; 
+        }
+
+        /* Linha pontilhada conectando prato e preço */
+        .dotted-leader {
+            flex-grow: 1;
+            border-bottom: 1px dotted #B0A89A;
+            margin: 0 10px;
+            position: relative;
+            top: -6px;
+            opacity: 0.3;
+        }
+
+        /* Ocultar barra de rolagem no menu de categorias mobile */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Animação suave para as seções */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-gold-500 selection:text-base-900">
+
+    <!-- HEADER & NAV FIXO -->
+    <header class="fixed w-full top-0 z-50 bg-base-900/95 backdrop-blur-md border-b border-base-700/50">
+        <!-- Topbar: Logo e Botão de Reserva -->
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
+            <div class="font-serif text-2xl font-bold tracking-widest text-sand-100 cursor-pointer" onclick="window.scrollTo(0,0)">
+                OCA<span class="text-gold-400">.</span>
+            </div>
+            
+            <a href="#reservas" class="inline-flex items-center justify-center px-5 py-2 text-xs font-bold tracking-widest uppercase rounded bg-gold-500 text-base-900 hover:bg-gold-400 transition-colors">
+                Reservar Mesa
+            </a>
+        </div>
+
+        <!-- Menu de Categorias Deslizante -->
+        <nav class="max-w-4xl mx-auto px-4 sm:px-6 py-3 overflow-x-auto no-scrollbar border-t border-base-700/30">
+            <ul class="flex gap-6 min-w-max">
+                <li><a href="#entradas" class="text-sm font-semibold tracking-wider uppercase text-sand-400 hover:text-gold-400 transition-colors">Entradas</a></li>
+                <li><a href="#principais" class="text-sm font-semibold tracking-wider uppercase text-sand-400 hover:text-gold-400 transition-colors">Principais</a></li>
+                <li><a href="#sobremesas" class="text-sm font-semibold tracking-wider uppercase text-sand-400 hover:text-gold-400 transition-colors">Sobremesas</a></li>
+                <li><a href="#drinks" class="text-sm font-semibold tracking-wider uppercase text-sand-400 hover:text-gold-400 transition-colors">Drinks</a></li>
+                <li><a href="#vinhos" class="text-sm font-semibold tracking-wider uppercase text-sand-400 hover:text-gold-400 transition-colors">Vinhos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="pt-32 pb-24">
+        <!-- HERO / CABEÇALHO DO CARDÁPIO -->
+        <section class="max-w-4xl mx-auto px-4 sm:px-6 mb-16 text-center fade-in-up">
+            <p class="text-gold-400 font-sans text-xs tracking-[0.3em] uppercase mb-4">Cozinha Contemporânea Brasileira</p>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-sand-100 mb-6">Menu Experiência</h1>
+            <p class="text-sand-400 font-light max-w-xl mx-auto">
+                Uma jornada pelos biomas do Brasil através de ingredientes nativos, técnicas modernas e memórias afetivas.
+            </p>
+        </section>
+
+        <!-- SEÇÃO: ENTRADAS -->
+        <section id="entradas" class="max-w-3xl mx-auto px-4 sm:px-6 mb-20 fade-in-up delay-100">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-px bg-gold-400/30 flex-grow"></div>
+                <h2 class="font-serif text-3xl text-sand-100">Para Começar</h2>
+                <div class="h-px bg-gold-400/30 flex-grow"></div>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Item 1 -->
+                <div>
+                    <div class="flex items-baseline justify-between mb-2">
+                        <h3 class="font-serif text-xl font-bold text-sand-200">Dadinhos de Tapioca Ancestral</h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans font-bold text-gold-400 whitespace-nowrap">R$ 42</span>
+                    </div>
+                    <p class="text-sm text-sand-400 font-light leading-relaxed pr-16">
+                        Queijo coalho curado, tapioca granulada e geleia picante de cupuaçu com pimenta de cheiro.
+                    </p>
+                </div>
+
+                <!-- Item 2 -->
+                <div>
+                    <div class="flex items-baseline justify-between mb-2">
+                        <h3 class="font-serif text-xl font-bold text-sand-200">Crudo de Robalo e Caju</h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans font-bold text-gold-400 whitespace-nowrap">R$ 68</span>
+                    </div>
+                    <p class="text-sm text-sand-400 font-light leading-relaxed pr-16">
+                        Peixe branco fresco curado no limão cravo, leite de tigre de caju, azeite de coentro e telha de mandioca.
+                    </p>
+                </div>
+
+                <!-- Item 3 -->
+                <div>
+                    <div class="flex items-baseline justify-between mb-2">
+                        <h3 class="font-serif text-xl font-bold text-sand-200">Croqueta de Costela</h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans font-bold text-gold-400 whitespace-nowrap">R$ 54</span>
+                    </div>
+                    <p class="text-sm text-sand-400 font-light leading-relaxed pr-16">
+                        Costela bovina defumada por 12h, maionese defumada de pequi e picles de maxixe. (4 unidades)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: PRATOS PRINCIPAIS -->
+        <section id="principais" class="max-w-3xl mx-auto px-4 sm:px-6 mb-20 fade-in-up delay-200">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-px bg-gold-400/30 flex-grow"></div>
+                <h2 class="font-serif text-3xl text-sand-100">Pratos Principais</h2>
+                <div class="h-px bg-gold-400/30 flex-grow"></div>
+            </div>
+
+            <div class="space-y-10">
+                <!-- Item 1 -->
+                <div>
+                    <div class="flex items-baseline justify-between mb-2">
+                        <h3 class="font-serif text-xl font-bold text-sand-200">Pirarucu Selvagem</h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans font-bold text-gold-400 whitespace-nowrap">R$ 115</span>
+                    </div>
+                    <p class="text-sm text-sand-400 font-light leading-relaxed pr-16">
+                        Lombo de pirarucu grelhado na manteiga de garrafa, purê cremoso de banana da terra, farofa crocante de castanha do Pará e emulsão de tucupi.
+                    </p>
+                </div>
+
+                <!-- Item 2 -->
+                <div>
+                    <div class="flex items-baseline justify-between mb-2">
+                        <h3 class="font-serif text-xl font-bold text-sand-200">Baião de Dois do Chef</h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans font-bold text-gold-400 whitespace-nowrap">R$ 98</span>
+                    </div>
+                    <p class="text-sm text-sand-400 font-light leading-relaxed pr-16">
+                        Arroz caldoso, feijão de corda, carne de sol de Angus desfiada, queijo coalho tostado com maçarico e pó de bacon.
+                    </p>
+                </div>
+
+                <!-- Item 3 -->
+                <div>
+                    <div class="flex items-baseline justify-between mb-2">
+                        <h3 class="font-serif text-xl font-bold text-sand-200">Nhoque da Terra <span class="text-xs uppercase bg-base-800 text-sand-400 px-2 py-1 rounded ml-2 align-middle">Vegetariano</span></h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans font-bold text-gold-400 whitespace-nowrap">R$ 82</span>
+                    </div>
+                    <p class="text-sm text-sand-400 font-light leading-relaxed pr-16">
+                        Nhoque de mandioquinha tostado, ragù de cogumelos frescos ao vinho tinto, espuma de queijo Canastra e azeite de trufas.
+                    </p>
+                </div>
+
+                <!-- Item 4 -->
+                <div>
+                    <div class="flex items-baseline justify-between mb-2">
+                        <h3 class="font-serif text-xl font-bold text-sand-200">Mignon ao Rôti de Jabuticaba</h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans font-bold text-gold-400 whitespace-nowrap">R$ 135</span>
+                    </div>
+                    <p class="text-sm text-sand-400 font-light leading-relaxed pr-16">
+                        Tornedor de filé mignon ao ponto do chef, demi-glace reduzido com jabuticaba, mil-folhas de mandioca e brotos orgânicos.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMAGEM DE RESPIRO -->
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 mb-20">
+            <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&q=80&w=1200" alt="Ambiente Sofisticado do Restaurante" class="w-full h-64 md:h-80 object-cover rounded-lg opacity-80 border border-base-700">
+        </div>
+
+        <!-- SEÇÃO: SOBREMESAS -->
+        <section id="sobremesas" class="max-w-3xl mx-auto px-4 sm:px-6 mb-20 fade-in-up delay-300">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-px bg-gold-400/30 flex-grow"></div>
+                <h2 class="font-serif text-3xl text-sand-100">O Doce Fim</h2>
+                <div class="h-px bg-gold-400/30 flex-grow"></div>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Item 1 -->
+                <div>
+                    <div class="flex items-baseline justify-between mb-2">
+                        <h3 class="font-serif text-xl font-bold text-sand-200">Texturas da Amazônia</h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans font-bold text-gold-400 whitespace-nowrap">R$ 45</span>
+                    </div>
+                    <p class="text-sm text-sand-400 font-light leading-relaxed pr-16">
+                        Mousse de chocolate 70% cacau de origem, sorbet de açaí puro, sponge cake de castanhas e tuile de mel de cacau.
+                    </p>
+                </div>
+
+                <!-- Item 2 -->
+                <div>
+                    <div class="flex items-baseline justify-between mb-2">
+                        <h3 class="font-serif text-xl font-bold text-sand-200">Pudim de Cumaru</h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans font-bold text-gold-400 whitespace-nowrap">R$ 38</span>
+                    </div>
+                    <p class="text-sm text-sand-400 font-light leading-relaxed pr-16">
+                        O clássico pudim de leite, aromatizado com fava de cumaru (a baunilha brasileira), flor de sal e calda cítrica de maracujá doce.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: DRINKS AUTORAIS -->
+        <section id="drinks" class="max-w-3xl mx-auto px-4 sm:px-6 mb-20 fade-in-up">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-px bg-gold-400/30 flex-grow"></div>
+                <h2 class="font-serif text-3xl text-sand-100">Mixologia Autoral</h2>
+                <div class="h-px bg-gold-400/30 flex-grow"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Drink 1 -->
+                <div class="bg-base-800 p-6 rounded-lg border border-base-700">
+                    <h3 class="font-serif text-lg font-bold text-gold-400 mb-2">Gim Tônica da Mata <span class="float-right text-sand-200 font-sans">R$ 42</span></h3>
+                    <p class="text-sm text-sand-400 font-light">Gin nacional, água tônica, folha de jambu (efeito anestésico sutil), limão siciliano e ramo de alecrim tostado.</p>
+                </div>
+
+                <!-- Drink 2 -->
+                <div class="bg-base-800 p-6 rounded-lg border border-base-700">
+                    <h3 class="font-serif text-lg font-bold text-gold-400 mb-2">Oca Sour <span class="float-right text-sand-200 font-sans">R$ 46</span></h3>
+                    <p class="text-sm text-sand-400 font-light">Cachaça envelhecida em amburana, xarope de rapadura, suco de caju fresco, limão cravo e espuma de gengibre.</p>
+                </div>
+
+                <!-- Drink 3 -->
+                <div class="bg-base-800 p-6 rounded-lg border border-base-700">
+                    <h3 class="font-serif text-lg font-bold text-gold-400 mb-2">Negroni do Cerrado <span class="float-right text-sand-200 font-sans">R$ 48</span></h3>
+                    <p class="text-sm text-sand-400 font-light">Releitura do clássico italiano com Gin, Campari, Vermouth Rosso e infusão leve de pequi e casca de laranja bahia.</p>
+                </div>
+
+                <!-- Drink 4 (Sem álcool) -->
+                <div class="bg-base-800 p-6 rounded-lg border border-base-700">
+                    <h3 class="font-serif text-lg font-bold text-gold-400 mb-2">Brisa <span class="text-xs uppercase text-sand-400 ml-1">Mocktail</span> <span class="float-right text-sand-200 font-sans">R$ 28</span></h3>
+                    <p class="text-sm text-sand-400 font-light">Kombucha de hibisco, xarope de framboesa, água com gás e limão taiti.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: CARTA DE VINHOS -->
+        <section id="vinhos" class="max-w-3xl mx-auto px-4 sm:px-6 mb-20 fade-in-up">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-px bg-gold-400/30 flex-grow"></div>
+                <h2 class="font-serif text-3xl text-sand-100">Adega</h2>
+                <div class="h-px bg-gold-400/30 flex-grow"></div>
+            </div>
+
+            <p class="text-center text-sm text-sand-400 mb-8 font-light italic">
+                Nossa adega valoriza terroirs sul-americanos, com destaque para a nova vinicultura brasileira. Solicite ao sommelier a carta completa.
+            </p>
+
+            <div class="space-y-6">
+                <!-- Categoria: Espumantes -->
+                <div>
+                    <h4 class="font-sans text-xs uppercase tracking-widest text-gold-500 mb-4">Espumantes & Brancos</h4>
+                    
+                    <div class="flex items-baseline justify-between mb-1">
+                        <h3 class="font-serif text-lg text-sand-200">Cave Geisse Nature (RS, Brasil)</h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans text-gold-400">R$ 240</span>
+                    </div>
+                    
+                    <div class="flex items-baseline justify-between mb-1 mt-3">
+                        <h3 class="font-serif text-lg text-sand-200">Guaspari Vista do Bosque Chardonnay (SP, Brasil)</h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans text-gold-400">R$ 310</span>
+                    </div>
+
+                    <div class="flex items-baseline justify-between mb-1 mt-3">
+                        <h3 class="font-serif text-lg text-sand-200">Susana Balbo Signature Torrontés (Mendoza, ARG)</h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans text-gold-400">R$ 195</span>
+                    </div>
+                </div>
+
+                <!-- Categoria: Tintos -->
+                <div class="pt-6 border-t border-base-700/50">
+                    <h4 class="font-sans text-xs uppercase tracking-widest text-gold-500 mb-4">Tintos</h4>
+                    
+                    <div class="flex items-baseline justify-between mb-1">
+                        <h3 class="font-serif text-lg text-sand-200">Almaúnica Syrah Reserva (RS, Brasil)</h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans text-gold-400">R$ 220</span>
+                    </div>
+                    
+                    <div class="flex items-baseline justify-between mb-1 mt-3">
+                        <h3 class="font-serif text-lg text-sand-200">Catena Zapata Malbec Argentino (Mendoza, ARG)</h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans text-gold-400">R$ 890</span>
+                    </div>
+
+                    <div class="flex items-baseline justify-between mb-1 mt-3">
+                        <h3 class="font-serif text-lg text-sand-200">Almaviva (Puente Alto, Chile)</h3>
+                        <div class="dotted-leader"></div>
+                        <span class="font-sans text-gold-400">R$ 2.400</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: RESERVAS (COMEMORAÇÕES E EVENTOS) -->
+        <section id="reservas" class="max-w-4xl mx-auto px-4 sm:px-6 mt-32 fade-in-up">
+            <div class="bg-gradient-to-br from-base-800 to-base-900 border border-gold-600/30 rounded-2xl p-8 md:p-12 text-center relative overflow-hidden shadow-2xl">
+                <!-- Decoração sutil de fundo -->
+                <div class="absolute -top-16 -right-16 w-32 h-32 bg-gold-500/10 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-16 -left-16 w-40 h-40 bg-gold-500/5 rounded-full blur-2xl"></div>
+
+                <div class="relative z-10">
+                    <i data-lucide="glass-water" class="w-10 h-10 text-gold-500 mx-auto mb-6"></i>
+                    <h2 class="font-serif text-3xl md:text-4xl text-sand-100 mb-4">Sua Próxima Celebração</h2>
+                    <p class="text-sand-400 font-light mb-8 max-w-xl mx-auto">
+                        O Oca é o cenário perfeito para jantares românticos, aniversários e confraternizações corporativas. Possuímos uma sala privativa para até 12 pessoas.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#" class="inline-flex items-center justify-center px-8 py-4 bg-gold-500 text-base-900 font-bold tracking-widest uppercase text-sm rounded hover:bg-gold-400 transition-colors shadow-[0_0_20px_rgba(212,175,55,0.15)]">
+                            <i data-lucide="calendar" class="w-4 h-4 mr-2"></i>
+                            Reservar Mesa
+                        </a>
+                        <a href="#" class="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-gold-500/50 text-gold-400 font-bold tracking-widest uppercase text-sm rounded hover:bg-gold-500/10 transition-colors">
+                            <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+                            Falar no WhatsApp
+                        </a>
+                    </div>
+                    <p class="text-xs text-sand-400 mt-6 font-light">Horário de funcionamento: Terça a Sábado das 19h às 23h30.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#0a0b0b] py-12 border-t border-base-800 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="font-serif text-2xl font-bold tracking-widest text-sand-100 mb-4">
+                OCA<span class="text-gold-400">.</span>
+            </div>
+            <p class="text-sand-400 text-sm font-light mb-8">
+                Rua da Gastronomia, 123 - Alta Vista, São Paulo/SP<br>
+                Taxa de serviço de 13% opcional. Se beber, não dirija.
+            </p>
+            
+            <div class="flex justify-center gap-6 text-sand-400 mb-8">
+                <a href="#" class="hover:text-gold-400 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-gold-400 transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+            </div>
+
+            <p class="text-xs text-base-700 tracking-widest uppercase">
+                © 2026 Oca Restaurante. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Inicializar Ícones
+        lucide.createIcons();
+
+        // Oberserver para animações de scroll (fade in up)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    // Optional: stop observing once animated
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach((elem) => {
+            elem.style.animationPlayState = 'paused';
+            observer.observe(elem);
+        });
+    </script>
+</body>
+</html>

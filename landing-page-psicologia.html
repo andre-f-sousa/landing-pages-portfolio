@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Marina | Psicologia Infantojuvenil</title>
+    
+    <!-- Google Fonts: Nunito (Arredondada, amigável e acolhedora) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration (Calm & Playful Palette) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                    },
+                    colors: {
+                        // Soft Mint/Teal - Calming, healing, trust
+                        mint: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                        },
+                        // Warm Sand - Comfort, grounded
+                        sand: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            800: '#5c4d47',
+                            900: '#3d312c',
+                        },
+                        // Soft Yellow/Orange - Playful, optimistic, child-friendly
+                        sunshine: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                        }
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                        '5xl': '3rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #fdf8f6;
+            color: #3d312c;
+        }
+
+        /* Organic blob shape for background elements */
+        .blob-shape {
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        }
+
+        /* Form styling */
+        .form-input {
+            width: 100%;
+            background-color: white;
+            border: 2px solid #f2e8e5;
+            border-radius: 1rem;
+            padding: 16px;
+            font-family: 'Nunito', sans-serif;
+            color: #3d312c;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #14b8a6; /* mint-500 */
+            box-shadow: 0 4px 14px rgba(20, 184, 166, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #9ca3af;
+        }
+
+        /* Smooth Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Image float animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-mint-200 selection:text-mint-700 overflow-x-hidden">
+
+    <!-- HEADER -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 cursor-pointer flex items-center gap-2" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-mint-500 rounded-full flex items-center justify-center text-white shadow-sm">
+                        <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-sand-900">Dra. Marina<span class="text-mint-600">.</span></span>
+                </div>
+                
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex gap-8 text-sm font-bold text-sand-800">
+                    <a href="#sintomas" class="hover:text-mint-600 transition-colors">Quando procurar?</a>
+                    <a href="#abordagem" class="hover:text-mint-600 transition-colors">Como funciona</a>
+                    <a href="#sobre" class="hover:text-mint-600 transition-colors">Sobre mim</a>
+                </nav>
+
+                <!-- CTA Header -->
+                <div class="hidden md:block">
+                    <a href="#agendamento" class="inline-flex items-center justify-center px-6 py-2.5 bg-mint-500 text-white font-bold rounded-full hover:bg-mint-600 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                        Agendar Sessão
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Icon -->
+                <div class="md:hidden text-sand-900">
+                    <i data-lucide="menu" class="w-7 h-7 stroke-[2.5]"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. HERO SECTION -->
+        <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-sand-50">
+            <!-- Playful Background Elements -->
+            <div class="absolute top-20 right-10 w-64 h-64 bg-sunshine-400/20 blob-shape blur-3xl -z-10"></div>
+            <div class="absolute bottom-10 left-10 w-80 h-80 bg-mint-500/20 blob-shape blur-3xl -z-10"></div>
+
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="reveal active">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-mint-700 text-sm font-bold shadow-sm mb-6 border border-mint-100">
+                            <i data-lucide="smile" class="w-4 h-4 text-sunshine-500"></i>
+                            Psicologia Infantil e Adolescência
+                        </div>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-sand-900 leading-tight mb-6">
+                            Um espaço seguro para seu filho <span class="text-mint-600">crescer e florescer.</span>
+                        </h1>
+                        <p class="text-lg md:text-xl text-sand-800 font-medium leading-relaxed max-w-lg mb-8">
+                            Acolhimento empático e lúdico para ajudar crianças e adolescentes a compreenderem suas emoções, superarem desafios e desenvolverem autoestima.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#agendamento" class="inline-flex justify-center items-center px-8 py-4 bg-mint-500 text-white font-bold text-lg rounded-full hover:bg-mint-600 transition-all duration-300 shadow-[0_8px_30px_rgb(20,184,166,0.3)] hover:-translate-y-1">
+                                Falar com a Dra. Marina
+                                <i data-lucide="message-circle" class="ml-2 w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Hero Visual -->
+                    <div class="relative lg:ml-auto w-full max-w-lg reveal active delay-200">
+                        <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white animate-float">
+                            <!-- Image of a happy child painting/playing -->
+                            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&q=80&w=1000" alt="Criança brincando feliz" class="w-full h-[500px] object-cover">
+                        </div>
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute bottom-10 -left-8 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-sand-100">
+                            <div class="bg-sunshine-400 p-3 rounded-full text-white">
+                                <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-sand-800 uppercase">Avaliação dos Pais</p>
+                                <p class="text-xl font-extrabold text-mint-600">5.0 / 5.0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. IDENTIFICAÇÃO / QUANDO PROCURAR? -->
+        <section id="sintomas" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                    <h2 class="text-mint-600 font-bold tracking-wider uppercase text-sm mb-3">Sem julgamentos</h2>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-sand-900 mb-6">Como saber se meu filho precisa de ajuda?</h3>
+                    <p class="text-lg text-sand-800">Crescer é um processo complexo. Nem sempre as crianças conseguem expressar com palavras o que estão sentindo. Preste atenção a estes sinais:</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-sand-50 p-8 rounded-3xl border border-sand-100 hover:shadow-lg transition-shadow reveal">
+                        <div class="w-14 h-14 bg-white text-mint-500 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+                            <i data-lucide="cloud-lightning" class="w-7 h-7"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-sand-900 mb-3">Ansiedade e Medos</h4>
+                        <p class="text-sand-800">Medos excessivos de dormir sozinho, ir à escola, crises de choro inexplicáveis ou preocupação constante com o futuro.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-sand-50 p-8 rounded-3xl border border-sand-100 hover:shadow-lg transition-shadow reveal delay-100">
+                        <div class="w-14 h-14 bg-white text-sunshine-500 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+                            <i data-lucide="frown" class="w-7 h-7"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-sand-900 mb-3">Mudança de Comportamento</h4>
+                        <p class="text-sand-800">Agressividade repentina, isolamento no quarto, irritabilidade ou perda de interesse em coisas que antes gostava muito.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-sand-50 p-8 rounded-3xl border border-sand-100 hover:shadow-lg transition-shadow reveal delay-200">
+                        <div class="w-14 h-14 bg-white text-mint-500 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+                            <i data-lucide="book-open" class="w-7 h-7"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-sand-900 mb-3">Dificuldades Escolares</h4>
+                        <p class="text-sand-800">Queda brusca no rendimento, dificuldade de concentração, problemas de socialização com colegas ou recusa escolar.</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center reveal">
+                    <p class="text-sand-800 font-medium bg-sunshine-400/10 inline-block px-6 py-3 rounded-full">
+                        <span class="font-bold text-sunshine-500">Importante:</span> Buscar terapia não é sinal de falha na criação, é um ato de amor e cuidado.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ABORDAGEM / SERVIÇOS -->
+        <section id="abordagem" class="py-24 bg-mint-50 overflow-hidden relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    
+                    <div class="relative reveal">
+                        <!-- Image of teenager or therapy room -->
+                        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&q=80&w=800" alt="Adolescente conversando com psicóloga" class="rounded-[3rem] shadow-xl object-cover h-[500px] w-full border-8 border-white">
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-sunshine-400 rounded-full -z-10"></div>
+                    </div>
+
+                    <div class="reveal">
+                        <h2 class="text-mint-600 font-bold tracking-wider uppercase text-sm mb-3">Como Funciona</h2>
+                        <h3 class="text-3xl md:text-4xl font-extrabold text-sand-900 mb-6">Uma linguagem adaptada para cada fase.</h3>
+                        <p class="text-lg text-sand-800 mb-8 leading-relaxed">
+                            O consultório é preparado para que a criança ou adolescente sinta que aquele espaço é dele. Não usamos linguagem difícil nem julgamentos, apenas empatia e escuta ativa.
+                        </p>
+                        
+                        <ul class="space-y-6">
+                            <li class="flex items-start gap-4 bg-white p-4 rounded-2xl shadow-sm border border-mint-100">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-mint-100 flex items-center justify-center">
+                                    <i data-lucide="puzzle" class="w-6 h-6 text-mint-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-sand-900">Crianças (Ludoterapia)</h4>
+                                    <p class="text-sand-800 text-sm mt-1">A criança não fala sobre seus problemas sentada no sofá. Ela expressa suas angústias brincando, desenhando e jogando.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4 bg-white p-4 rounded-2xl shadow-sm border border-mint-100">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-sunshine-400/20 flex items-center justify-center">
+                                    <i data-lucide="headphones" class="w-6 h-6 text-sunshine-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-sand-900">Adolescentes</h4>
+                                    <p class="text-sand-800 text-sm mt-1">Um ambiente seguro onde o sigilo é respeitado. Foco em identidade, conflitos familiares, vestibular e pressão social.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4 bg-white p-4 rounded-2xl shadow-sm border border-mint-100">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-mint-100 flex items-center justify-center">
+                                    <i data-lucide="users" class="w-6 h-6 text-mint-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-sand-900">Orientação de Pais</h4>
+                                    <p class="text-sand-800 text-sm mt-1">Sessões periódicas apenas com os responsáveis para devolver feedback, alinhar expectativas e orientar o manejo em casa.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SOBRE A PROFISSIONAL -->
+        <section id="sobre" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <div class="bg-sand-50 rounded-[3rem] p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-12 border border-sand-100 reveal">
+                    <div class="w-full md:w-1/3">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=600" alt="Dra. Marina - Psicóloga" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-xl border-8 border-white mx-auto">
+                    </div>
+                    <div class="w-full md:w-2/3 text-center md:text-left">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-sand-900 mb-4">Prazer, sou a Marina.</h2>
+                        <h3 class="text-mint-600 font-bold mb-6">Psicóloga Clínica CRP 00/00000</h3>
+                        <p class="text-sand-800 text-lg leading-relaxed mb-6">
+                            Sou apaixonada por acompanhar o desenvolvimento humano. Especialista em Psicologia Infantojuvenil pela Universidade (Nome), atuo há mais de 8 anos ajudando famílias a reencontrarem a harmonia e crianças a crescerem felizes e seguras de si.
+                        </p>
+                        <p class="text-sand-800 text-lg leading-relaxed mb-8">
+                            Acredito que o consultório deve ser um refúgio: um lugar onde o seu filho pode tirar a "armadura" e ser apenas ele mesmo.
+                        </p>
+                        <a href="#agendamento" class="inline-flex items-center text-mint-600 font-extrabold hover:text-mint-700 transition-colors">
+                            Conhecer o consultório <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. AGENDAMENTO / CONTATO (FORMULÁRIO) -->
+        <section id="agendamento" class="py-24 bg-mint-600 relative overflow-hidden">
+            <!-- Decorative Backgrounds -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-mint-500 rounded-full blur-3xl -z-0"></div>
+            <div class="absolute bottom-0 left-0 w-80 h-80 bg-mint-700 rounded-full blur-3xl -z-0"></div>
+
+            <div class="max-w-6xl mx-auto px-6 lg:px-12 relative z-10 flex flex-col lg:flex-row gap-16 items-center">
+                
+                <!-- Text Info -->
+                <div class="lg:w-1/2 text-white reveal">
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Dê o primeiro passo rumo ao bem-estar da sua família.</h2>
+                    <p class="text-mint-100 text-lg mb-10 leading-relaxed font-medium">
+                        Preencha o formulário para agendarmos a nossa primeira conversa (Sessão de Acolhimento aos Pais). Se preferir algo mais rápido, basta me chamar no WhatsApp.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4 bg-mint-700/50 p-4 rounded-2xl">
+                            <div class="bg-white/20 p-3 rounded-full">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">Endereço do Consultório</p>
+                                <p class="text-mint-100 text-sm">Edifício Health Center - Sala 402<br>Centro, São Paulo - SP</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-mint-700/50 p-4 rounded-2xl">
+                            <div class="bg-white/20 p-3 rounded-full">
+                                <i data-lucide="phone" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold">WhatsApp Direto</p>
+                                <p class="text-mint-100 text-sm">(11) 99999-0000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:w-1/2 w-full reveal delay-100">
+                    <div class="bg-white p-8 md:p-10 rounded-[2rem] shadow-2xl relative">
+                        <div class="absolute -top-6 -right-6 bg-sunshine-400 text-white p-4 rounded-full shadow-lg transform rotate-12 hidden md:block">
+                            <i data-lucide="calendar" class="w-8 h-8"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-extrabold text-sand-900 mb-2">Solicitar Agendamento</h3>
+                        <p class="text-sand-800 text-sm mb-6">Nossa secretária entrará em contato para encontrar o melhor horário.</p>
+                        
+                        <form id="contactForm" onsubmit="submitForm(event)" class="space-y-5">
+                            <div>
+                                <label class="block text-sm font-bold text-sand-900 mb-1 ml-2">Seu Nome (Responsável)</label>
+                                <input type="text" required class="form-input" placeholder="Como podemos te chamar?">
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-bold text-sand-900 mb-1 ml-2">WhatsApp</label>
+                                    <input type="tel" required class="form-input" placeholder="(00) 00000-0000">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-sand-900 mb-1 ml-2">Idade do Paciente</label>
+                                    <input type="text" required class="form-input" placeholder="Ex: 8 anos, 15 anos...">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-bold text-sand-900 mb-1 ml-2">Motivo da busca (Opcional)</label>
+                                <textarea rows="3" class="form-input resize-none" placeholder="Conte-nos brevemente o que está acontecendo..."></textarea>
+                            </div>
+
+                            <button type="submit" id="submitBtn" class="w-full flex justify-center items-center py-4 bg-mint-500 text-white font-extrabold text-lg rounded-xl hover:bg-mint-600 transition-all duration-300 shadow-lg mt-4">
+                                Enviar Mensagem
+                                <i data-lucide="send" class="ml-2 w-5 h-5"></i>
+                            </button>
+                            
+                            <div id="successMessage" class="hidden mt-4 p-4 bg-mint-50 border border-mint-200 text-mint-700 text-center text-sm font-bold rounded-xl">
+                                Recebemos sua mensagem com carinho! ♥ <br> Vamos chamar você no WhatsApp em breve.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-sand-100 py-12 border-t border-sand-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-mint-500 rounded-full flex items-center justify-center text-white">
+                    <i data-lucide="heart-handshake" class="w-4 h-4"></i>
+                </div>
+                <span class="font-extrabold text-lg text-sand-900">Dra. Marina<span class="text-mint-600">.</span></span>
+            </div>
+            
+            <div class="flex gap-4">
+                <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-mint-600 hover:bg-mint-500 hover:text-white transition-colors shadow-sm"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-mint-600 hover:bg-mint-500 hover:text-white transition-colors shadow-sm"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+            </div>
+
+            <div class="text-center md:text-right">
+                <p class="text-xs text-sand-800 font-bold uppercase tracking-wider mb-1">
+                    © 2026 Dra. Marina - Psicóloga Clínica.
+                </p>
+                <p class="text-xs text-sand-800">CRP 00/00000 • Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON (Crucial para clínicas) -->
+    <a href="#" class="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-300 group" aria-label="Falar no WhatsApp">
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+        <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-40 group-hover:animate-ping -z-10"></span>
+    </a>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Inicializar Ícones
+        lucide.createIcons();
+
+        // Header Style on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 80;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        setTimeout(reveal, 100);
+
+        // Auto-resize Textarea
+        const tx = document.getElementsByTagName("textarea");
+        for (let i = 0; i < tx.length; i++) {
+            tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+            tx[i].addEventListener("input", OnInput, false);
+        }
+        function OnInput() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + "px";
+        }
+
+        // Formulário Submit Simulate
+        function submitForm(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const successMsg = document.getElementById('successMessage');
+            
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i data-lucide="loader-2" class="animate-spin w-5 h-5 mr-2"></i> Enviando...';
+            btn.classList.add('opacity-80', 'pointer-events-none');
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                document.getElementById('contactForm').reset();
+                btn.innerHTML = originalText;
+                btn.classList.remove('opacity-80', 'pointer-events-none');
+                
+                successMsg.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    successMsg.classList.add('hidden');
+                }, 8000);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
